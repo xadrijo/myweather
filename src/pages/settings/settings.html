@@ -8,5 +8,25 @@
 
 
 <ion-content padding class="settings">
-  <h2>Welcome to settings</h2>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <ion-list>
+          <ion-item>
+            <ion-label fixed>Default City</ion-label>
+            <ion-input (keyup)="getQuery()" [(ngModel)] ="searchStr" type="text"></ion-input>
+          </ion-item>
+          <p class="current">Current: {{ defaultCity }}</p>
+          <button (click)="saveChanges()" block ion-button>Save Changes</button> 
+        </ion-list>
+
+        <ion-list>
+          <ion-item *ngFor="let result of results">
+            <span (click) = "setDefaultCity(result)">{{ result.name }}</span>
+          </ion-item>
+        </ion-list>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
